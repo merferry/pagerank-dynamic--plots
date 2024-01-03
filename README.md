@@ -1,4 +1,4 @@
-I want to keep track of changes to the plot scripts for Barrier-free PageRank.
+I want to keep track of changes to the plot scripts for Parallel Dynamic PageRank algorithm.
 
 <br>
 <br>
