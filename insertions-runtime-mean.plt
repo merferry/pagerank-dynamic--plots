@@ -1,5 +1,5 @@
 set term pdf
-set terminal pdf size 4in,3in
+set terminal pdf size 4in,3.6in
 set output 'insertions-runtime-mean.pdf'
 
 
@@ -11,7 +11,7 @@ set style textbox opaque noborder
 set xtics rotate by 45 right
 set format x "10^{%L}"
 set grid y
-set key off
+set key above font ",12"
 
 
 ## Set line styles
@@ -27,10 +27,10 @@ set logscale y 10
 set xlabel  '{/:Bold Batch fraction}'
 set ylabel  '{/:Bold Runtime (s)}'
 plot 'insertions.csv' \
-     using 4:($5 /1000) title 'Static'        linestyle  1 with linespoints, \
-  '' using 4:($7 /1000) title 'Naive-dyn'     linestyle  2 with linespoints, \
-  '' using 4:($9 /1000) title 'Dyn Traversal' linestyle  3 with linespoints, \
-  '' using 4:($11/1000) title 'Dyn Frontier'  linestyle  4 with linespoints, \
+     using 4:($5 /1000) title 'Static'            linestyle  1 with linespoints, \
+  '' using 4:($7 /1000) title 'Naive-dynamic'     linestyle  2 with linespoints, \
+  '' using 4:($9 /1000) title 'Dynamic Traversal' linestyle  3 with linespoints, \
+  '' using 4:($11/1000) title 'Dynamic Frontier'  linestyle  4 with linespoints, \
   '' using 4:($5 /1000):($4==1e-7? sprintf("%.1f", $5 /1000) : "") with labels notitle offset character 2.2,character 0.6 textcolor linetype 7, \
   '' using 4:($5 /1000):($4>=1e-6 && $4 <1e-2? sprintf("%.1f", $5 /1000) : "") with labels notitle offset character -1.2,character 0.8 textcolor linetype 7, \
   '' using 4:($7 /1000):($4==1e-7? sprintf("%.1f", $7 /1000) : "") with labels notitle offset character 2.2,character -0.6 textcolor linetype 6, \

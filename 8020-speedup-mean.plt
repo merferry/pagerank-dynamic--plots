@@ -1,5 +1,5 @@
 set term pdf
-set terminal pdf size 4in,3in
+set terminal pdf size 4in,3.6in
 set output '8020-speedup-mean.pdf'
 
 
@@ -11,7 +11,7 @@ set style textbox opaque noborder
 set xtics rotate by 45 right
 set format x "10^{%L}"
 set grid y
-set key off
+set key above font ",12"
 
 
 ## Set line styles
@@ -27,9 +27,9 @@ set logscale x 10
 set xlabel  '{/:Bold Batch fraction}'
 set ylabel  '{/:Bold Speedup}'
 plot '8020.csv' \
-     using 4:($5 /$11) title 'Static'        linestyle  1 with linespoints, \
-  '' using 4:($7 /$11) title 'Naive-dyn'     linestyle  2 with linespoints, \
-  '' using 4:($9 /$11) title 'Dyn Traversal' linestyle  3 with linespoints, \
+     using 4:($5 /$11) title 'Static'            linestyle  1 with linespoints, \
+  '' using 4:($7 /$11) title 'Naive-dynamic'     linestyle  2 with linespoints, \
+  '' using 4:($9 /$11) title 'Dynamic Traversal' linestyle  3 with linespoints, \
   '' using 4:($5 /$11):($4==1e-7? sprintf("%.1f", $5 /$11) : "") with labels notitle offset character 2.8,character -0.6 textcolor linetype 7, \
   '' using 4:($5 /$11):($4==1e-6? sprintf("%.1f", $5 /$11) : "") with labels notitle offset character 2.8,character 0 textcolor linetype 7, \
   '' using 4:($5 /$11):($4==1e-5? sprintf("%.1f", $5 /$11) : "") with labels notitle offset character 2.8,character 0 textcolor linetype 7, \
